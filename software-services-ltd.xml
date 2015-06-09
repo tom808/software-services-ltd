@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="software-services-ltd" default="all">
+  
+  
+  <property file="software-services-ltd.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.lib.classpath">
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module software-services-ltd -->
+  
+  <dirname property="module.software-services-ltd.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.software-services-ltd" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.software-services-ltd" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.software-services-ltd" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.software-services-ltd" value="-encoding UTF-8 -source 8 ${compiler.args}"/>
+  
+  <property name="software-services-ltd.output.dir" value="${module.software-services-ltd.basedir}/out/production/software-services-ltd"/>
+  <property name="software-services-ltd.testoutput.dir" value="${module.software-services-ltd.basedir}/out/test/software-services-ltd"/>
+  
+  <path id="software-services-ltd.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="software-services-ltd.module.production.classpath">
+    <path refid="${module.jdk.classpath.software-services-ltd}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="software-services-ltd.runtime.production.module.classpath">
+    <pathelement location="${software-services-ltd.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="software-services-ltd.module.classpath">
+    <path refid="${module.jdk.classpath.software-services-ltd}"/>
+    <pathelement location="${software-services-ltd.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="software-services-ltd.runtime.module.classpath">
+    <pathelement location="${software-services-ltd.testoutput.dir}"/>
+    <pathelement location="${software-services-ltd.output.dir}"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.software-services-ltd">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.software-services-ltd">
+    <patternset refid="excluded.from.module.software-services-ltd"/>
+  </patternset>
+  
+  <path id="software-services-ltd.module.sourcepath">
+    <dirset dir="${module.software-services-ltd.basedir}">
+      <include name="src"/>
+      <include name="lib"/>
+      <include name="data"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.software-services-ltd" depends="compile.module.software-services-ltd.production,compile.module.software-services-ltd.tests" description="Compile module software-services-ltd"/>
+  
+  <target name="compile.module.software-services-ltd.production" depends="register.custom.compilers" description="Compile module software-services-ltd; production classes">
+    <mkdir dir="${software-services-ltd.output.dir}"/>
+    <javac2 destdir="${software-services-ltd.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.software-services-ltd}/javac">
+      <compilerarg line="${compiler.args.software-services-ltd}"/>
+      <bootclasspath refid="software-services-ltd.module.bootclasspath"/>
+      <classpath refid="software-services-ltd.module.production.classpath"/>
+      <src refid="software-services-ltd.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.software-services-ltd"/>
+    </javac2>
+    
+    <copy todir="${software-services-ltd.output.dir}">
+      <fileset dir="${module.software-services-ltd.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.software-services-ltd.basedir}/lib">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.software-services-ltd.tests" depends="register.custom.compilers,compile.module.software-services-ltd.production" description="compile module software-services-ltd; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.software-services-ltd" description="cleanup module">
+    <delete dir="${software-services-ltd.output.dir}"/>
+    <delete dir="${software-services-ltd.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.software-services-ltd" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.software-services-ltd" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.software-services-ltd:jar" value="${basedir}/out/artifacts/software_services_ltd_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.untitled104.jar" value="${artifacts.temp.dir}/untitled104.jar"/>
+  </target>
+  
+  <target name="artifact.software-services-ltd:jar" depends="init.artifacts, compile.module.software-services-ltd" description="Build &#39;software-services-ltd:jar&#39; artifact">
+    <property name="artifact.temp.output.software-services-ltd:jar" value="${artifacts.temp.dir}/software_services_ltd_jar"/>
+    <mkdir dir="${artifact.temp.output.software-services-ltd:jar}"/>
+    <jar destfile="${temp.jar.path.untitled104.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${software-services-ltd.output.dir}"/>
+      <zipfileset src="${basedir}/lib/json-simple-1.1.jar"/>
+      <zipfileset file="${basedir}/lib/json-simple-1.1.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.untitled104.jar}" tofile="${artifact.temp.output.software-services-ltd:jar}/untitled104.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.software-services-ltd:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.software-services-ltd:jar}"/>
+    <copy todir="${artifact.output.software-services-ltd:jar}">
+      <fileset dir="${artifact.temp.output.software-services-ltd:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

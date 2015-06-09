@@ -1,0 +1,54 @@
+[
+    {"first_name": "Paula", "last_name": "Clark", "salary": "36309.53"
+    }
+  ,
+    {
+      "first_name": "Irene", "last_name": "Gonzales", "salary": "22519.14"
+    }
+  ,
+    {
+      "first_name": "Betty", "last_name": "Carroll", "salary": "35525.19"}
+  ,
+    {
+      "first_name": "Jacqueline", "last_name": "Johnston", "salary": "27999.16"
+    }
+  ,
+    {
+      "first_name": "Karen", "last_name": "Webb", "salary": "27583.86"},
+    {"first_name": "Roy", "last_name": "Duncan", "salary": "18634.93"
+    }
+  ,
+    {
+      "first_name": "Amanda", "last_name": "Hanson", "salary": "37450.65"
+    }
+  ,
+    {
+      "first_name": "Craig", "last_name": "Kim", "salary": "26370.93"}
+  ,
+    {
+      "first_name": "Donna", "last_name": "Lee", "salary": "25460.45"
+    }
+  ,
+    {
+      "first_name": "Jennifer", "last_name": "Harper", "salary": "28313.09"},
+    {"first_name": "Debra", "last_name": "Mcdonald", "salary": "22903.29"
+    }
+  ,
+    {
+      "first_name": "Debra", "last_name": "Moreno", "salary": "43293.07"
+    }
+  ,
+    {
+      "first_name": "Marilyn", "last_name": "Lane", "salary": "20071.01"}
+  ,
+    {
+      "first_name": "Dennis", "last_name": "Reid", "salary": "29314.53"
+    }
+  ,
+    {
+      "first_name": "Margaret", "last_name": "Hunt", "salary": "41830.41"},
+    {"first_name": "Susan", "last_name": "Chavez", "salary": "25357.95"
+    }
+
+
+]

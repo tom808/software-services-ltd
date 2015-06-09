@@ -1,9 +1,13 @@
 package com.tegan;
 
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import com.oracle.tools.packager.IOUtils;
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
+import sun.nio.ch.IOUtil;
 
 public class Main {
 
@@ -37,9 +41,18 @@ public class Main {
 
         try {
 
-            FileReader fr =  new FileReader(fileName);
-            JSONParser jsonParser = new JSONParser();
-            JSONArray jsonArray =  (JSONArray)jsonParser.parse(fr);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+                Main.class.getClassLoader().getResourceAsStream(fileName))
+            );
+
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+
+            JSONArray jsonArray = (JSONArray)new JSONParser().parse(stringBuilder.toString());
 
             for (int i = 0; i < jsonArray.size(); i++) {
 
@@ -55,6 +68,8 @@ public class Main {
         }
         catch (Exception ex) {
             ex.printStackTrace();
+            System.out.println("Mock file " + fileName + " not found . . . ooops!");
+
         }
 
         return empList;
